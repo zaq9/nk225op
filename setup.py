@@ -1,12 +1,14 @@
 from os import path
-
 from setuptools import setup
 
 here = path.abspath(path.dirname(__file__))
 
+with open("README.md", "r",encoding="utf-8_sig") as fh:
+    long_description = fh.read()
+
 setup(
     name='nk225op',
-    version='0.1.0',
+    version='0.1.2',
     description='Download latest Option Price(nk255) from JPX',
     url='https://github.com/zaq9/nk225op',
     author='zaq',
