@@ -3,17 +3,19 @@ Module for fetching latest NK225 Options Data
 
 最新の日経２２５清算値データをJPXサーバから取得する。
 
-Example: [Jupyter Notebook](https://github.com/zaq9/nk225op/blob/master/doc/eg_nk225op.ipynb)
+ [Jupyter Notebook example](https://github.com/zaq9/nk225op/blob/master/doc/eg_nk225op.ipynb)
 
 
 
-## Install(Google Colaboratory)
+## Install:( Google Colaboratory)
 
 ```
 !pip install git+https://github.com/zaq9/nk225op
 ```
 
 
+
+## Example:
 
 ```python
 

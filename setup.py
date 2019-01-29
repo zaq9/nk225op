@@ -5,10 +5,10 @@ from setuptools import setup
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='nk225op_jpx',
+    name='nk225op',
     version='0.1.0',
     description='Download latest Option Price(nk255) from JPX',
-    url='https://github.com/zaq9/nk225op_jpx',
+    url='https://github.com/zaq9/nk225op',
     author='zaq',
     author_email='zaq_9@yahoo.co.jp',
 
