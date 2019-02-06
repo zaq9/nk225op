@@ -15,19 +15,30 @@ def latest_csv_path():
 	return soup.find(class_="component-file").a.get('href')
 
 
-def csv_to_df(csv_path):
+def csv_to_df(csv_path, max_maturity_day=90):
+	"""
+	清算値CSVファイルをDataFrameに変換
+	Parameters
+	----------
+	csv_path : str
+	max_maturity_day :  int , default 90
+		最大、SQ期日が何日後までのデータを取得するか（規定値９０日後）
+	Returns
+	-------
+	DataFrame
+
+	"""
 	"""
 	:param csv_path: str
 	:return: DataFrame
-		清算値CSVファイルをDataFrameに変換（SQが90日以内の日経225オプション関連情報のみを抽出）
+		報のみを抽出）
 	"""
-
 	colName = ("CODE", "NAME", "TYPE", "MATURITY", "STRIKE",
 	           "PRICE", "TPRICE", "NK", "IV", "R", "TIME", "BASE")
 	df = pd.read_csv(sv + csv_path, skiprows=3, encoding="SHIFT-JIS", names=colName)
 	df = df.query(
 		'BASE=="日経225"').query(
-		'TIME<=90 ').dropna()
+		f'TIME<={max_maturity_day} ').dropna()
 	df = df.assign(
 		PRICE=df.PRICE.astype(int),
 		STRIKE=df.STRIKE.astype(int),
