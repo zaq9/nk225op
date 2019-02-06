@@ -28,11 +28,7 @@ def csv_to_df(csv_path, max_maturity_day=90):
 	DataFrame
 
 	"""
-	"""
-	:param csv_path: str
-	:return: DataFrame
-		報のみを抽出）
-	"""
+
 	colName = ("CODE", "NAME", "TYPE", "MATURITY", "STRIKE",
 	           "PRICE", "TPRICE", "NK", "IV", "R", "TIME", "BASE")
 	df = pd.read_csv(sv + csv_path, skiprows=3, encoding="SHIFT-JIS", names=colName)
