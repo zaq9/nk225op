@@ -40,11 +40,11 @@ def csv_to_df(csv_path, max_maturity_day=90):
 		STRIKE=df.STRIKE.astype(int),
 		lb=df['MATURITY'].astype(str).str[4:] + '/' + df.TYPE.str[0] + \
 		   df['STRIKE'].astype(int).astype(str)).set_index(
-		'lb')[["PRICE", "TYPE", "STRIKE", "MATURITY", "IV"]]
+		'lb')[["CODE", "PRICE", "TYPE", "STRIKE", "MATURITY", "IV"]]
 	return df
 
 
-def query_df(df, maturities=None, strike_range=None):
+def query_df(df, maturities=None, strike_range=None, tag=None):
 	"""
 	:param df: DataFrame
 	:param maturities: List
@@ -57,7 +57,12 @@ def query_df(df, maturities=None, strike_range=None):
 		strike_min = strike_range[0]
 		strike_max = strike_range[1]
 		df = df.query(f"{strike_min} <= STRIKE <= {strike_max}")
-	return df.assign(STRIKE=df.STRIKE.astype(int))[['PRICE', 'IV']]
+	if (tag is not None):
+		tag_ = tag
+	else:
+		tag_ = ['PRICE']
+
+	return df.assign(STRIKE=df.STRIKE.astype(int))[tag_]
 
 
 def nk225op(maturities=None, strike_range=None):

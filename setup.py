@@ -7,7 +7,7 @@ with io.open('readme.md', 'rt', encoding='utf_8_sig') as fh:
 
 setup(
 	name='nk225op',
-	version='0.1.8',
+	version='0.1.9',
 	description='Download latest Option Price(nk255) from JPX',
 	long_description=long_description,
 	long_description_content_type="text/markdown",
